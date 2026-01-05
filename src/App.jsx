@@ -1,34 +1,51 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
-import TodoList from './components/TodoList/TodoList';  
-import Dashboard from './pages/Dashboard';
-import Attendance from './pages/Attendance';
-import Employees from './pages/Employees';
-import Reports from './pages/Reports';
-import Settings from './pages/Settings';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
+import EmployeePage from './pages/EmployeePage/EmployeesPage';
+import AttendancePage from './pages/AttendancePage/AttendancePage';
+import ReportPage from './pages/ReportPage/ReportsPage';
+import SettingPage from './pages/SettingPage/SettingsPage';
 import './App.css';
 
 function App() {
-  const [activeMenu, setActiveMenu] = useState('Dashboard');
-  
-  const handleMenuClick = (menuName) => {
-    setActiveMenu(menuName);
-  };
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
     <div className="app-container">
-      <Sidebar activeMenu={activeMenu} onMenuClick={handleMenuClick} />
-      <div className="main-content">
-        <Header />
-        <div className="content-area">
-          {activeMenu === 'Dashboard' && <Dashboard />}
-          {activeMenu === 'Attendance' && <Attendance />}
-          {activeMenu === 'Employees' && <Employees />}
-          {activeMenu === 'Reports' && <Reports />}
-          {activeMenu === 'Settings' && <Settings />}
+      <Router>
+        <Sidebar onCollapse={setIsSidebarCollapsed} />
+        <div
+          className="main-content"
+          style={{
+            marginLeft: isSidebarCollapsed ? '30px' : '250px',
+            transition: 'margin-left 0.3s ease'
+          }}
+        >
+          <Header />
+          <div className="content-area">
+            <Routes>
+              {/* Set default route to employees */}
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              
+              {/* Dashboard route - this should work now */}
+              <Route path="/dashboard" element={<DashboardPage />} />
+              
+              {/* Employees route */}
+              <Route path="/employees" element={<EmployeePage />} />
+              
+              {/* Other routes */}
+              <Route path="/attendance" element={<AttendancePage />} />
+              <Route path="/reports" element={<ReportPage />} />
+              <Route path="/settings" element={<SettingPage />} />
+              
+              {/* Fallback route */}
+              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </Router>
     </div>
   );
 }

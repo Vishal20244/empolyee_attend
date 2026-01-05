@@ -10,6 +10,9 @@ const AttendanceTable = () => {
     { id: 5, name: 'Robert Wilson', department: 'Engineering', status: 'Present', checkIn: '08:50 AM', checkOut: '05:20 PM' },
     { id: 6, name: 'Lisa Anderson', department: 'Finance', status: 'Present', checkIn: '08:55 AM', checkOut: '05:40 PM' },
     { id: 7, name: 'David Miller', department: 'Operations', status: 'Absent', checkIn: '-', checkOut: '-' },
+    { id: 8, name: 'David Miller', department: 'Operations', status: 'Absent', checkIn: '-', checkOut: '-' },
+    { id: 9, name: 'David Miller', department: 'Operations', status: 'Absent', checkIn: '-', checkOut: '-' },
+    { id: 10, name: 'David Miller', department: 'Operations', status: 'Absent', checkIn: '-', checkOut: '-' },
    
 
   ];
