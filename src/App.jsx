@@ -7,6 +7,7 @@ import EmployeePage from './pages/EmployeePage/EmployeesPage';
 import AttendancePage from './pages/AttendancePage/AttendancePage';
 import ReportPage from './pages/ReportPage/ReportsPage';
 import SettingPage from './pages/SettingPage/SettingsPage';
+import AddEmployee from './pages/AddEmployee/AddEmployee'
 import './App.css';
 
 function App() {
@@ -28,18 +29,21 @@ function App() {
             <Routes>
               {/* Set default route to employees */}
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
-              
+
               {/* Dashboard route - this should work now */}
               <Route path="/dashboard" element={<DashboardPage />} />
-              
+
               {/* Employees route */}
               <Route path="/employees" element={<EmployeePage />} />
-              
+
               {/* Other routes */}
               <Route path="/attendance" element={<AttendancePage />} />
               <Route path="/reports" element={<ReportPage />} />
               <Route path="/settings" element={<SettingPage />} />
-              
+
+              {/* navigate add employee routes */}
+              <Route path="/add-employee" element={<AddEmployee />} />
+
               {/* Fallback route */}
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </Routes>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../EmployeePage/EmployeesPage.css'
+import '../AddEmployee/AddEmployee'
 import {
   FiUsers,
   FiUserCheck,
@@ -70,15 +71,15 @@ const Employees = () => {
   ];
 
   const handleAddEmployee = () => {
-    navigate('/employees/add');
+    navigate('/add-employee');
   };
 
   const handleViewEmployee = (id) => {
-    navigate(`/employees/${id}`);
+    navigate(`employee${id}`);
   };
 
   const handleEditEmployee = (id) => {
-    navigate(`/employees/edit/${id}`);
+    navigate(`employee/edit/${id}`);
   };
 
   const handleDeleteEmployee = (id) => {
